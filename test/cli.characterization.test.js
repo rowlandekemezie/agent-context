@@ -16,7 +16,7 @@ async function exists(filePath) {
   }
 }
 
-describe('ai-work CLI characterization', () => {
+describe('agent-context CLI characterization', () => {
   it('Given a new project, when init runs, then it creates the base project memory layout', async () => {
     await withTempWorkspace(async ({ cwd, env, projectDir }) => {
       const result = await runCli(['init'], { cwd, env });
@@ -42,8 +42,8 @@ describe('ai-work CLI characterization', () => {
     });
   });
 
-  it('Given initialized AI work storage, when info runs, then it prints valid JSON with configured paths', async () => {
-    await withTempWorkspace(async ({ cwd, env, aiWorkHome, projectDir, projectName }) => {
+  it('Given initialized agent context storage, when info runs, then it prints valid JSON with configured paths', async () => {
+    await withTempWorkspace(async ({ cwd, env, agentContextHome, projectDir, projectName }) => {
       const result = await runCli(['info'], { cwd, env });
 
       expect(result.exitCode).toBe(0);
@@ -51,7 +51,7 @@ describe('ai-work CLI characterization', () => {
 
       const info = JSON.parse(result.stdout);
       expect(info.root).toBe(cwd);
-      expect(info.aiWorkHome).toBe(aiWorkHome);
+      expect(info.agentContextHome).toBe(agentContextHome);
       expect(info.projectName).toBe(projectName);
       expect(info.projectDir).toBe(projectDir);
       expect(info.currentFocusPath).toBe(path.join(projectDir, 'current-focus.md'));
@@ -223,11 +223,11 @@ describe('ai-work CLI characterization', () => {
 
       expect(result.exitCode).toBe(0);
       expect(result.stderr).toBe('');
-      expect(result.stdout).toContain('ai-work 0.1.0');
+      expect(result.stdout).toContain('agent-context 0.1.0');
       expect(result.stdout).toContain('Usage:');
       expect(result.stdout).toContain('Commands:');
       expect(result.stdout).toContain('Options:');
-      expect(result.stdout).toContain('AI_WORK_HOME');
+      expect(result.stdout).toContain('AGENT_CONTEXT_HOME');
       expect(await exists(projectDir)).toBe(false);
     });
   });
@@ -238,8 +238,8 @@ describe('ai-work CLI characterization', () => {
 
       expect(result.exitCode).toBe(0);
       expect(result.stderr).toBe('');
-      expect(result.stdout).toContain('ai-work <command> [args]');
-      expect(result.stdout).toContain('ai-work progress append [file]');
+      expect(result.stdout).toContain('agent-context <command> [args]');
+      expect(result.stdout).toContain('agent-context progress append [file]');
     });
   });
 
@@ -262,21 +262,21 @@ describe('ai-work CLI characterization', () => {
       expect(result.stdout).toBe('');
       expect(result.stderr).toContain('Unknown command: wat');
       expect(result.stderr).toContain('Usage:');
-      expect(result.stderr).toContain('ai-work init');
+      expect(result.stderr).toContain('agent-context init');
     });
   });
 
-  it('Given AI_WORK_PROJECT is unset, when init runs, then the project name defaults to the cwd basename', async () => {
-    await withTempWorkspace(async ({ cwd, aiWorkHome }) => {
+  it('Given AGENT_CONTEXT_PROJECT is unset, when init runs, then the project name defaults to the cwd basename', async () => {
+    await withTempWorkspace(async ({ cwd, agentContextHome }) => {
       const result = await runCli(['init'], {
         cwd,
         env: {
-          AI_WORK_HOME: aiWorkHome,
+          AGENT_CONTEXT_HOME: agentContextHome,
         },
       });
 
       expect(result.exitCode).toBe(0);
-      expect(result.stdout.trim()).toBe(path.join(aiWorkHome, path.basename(cwd)));
+      expect(result.stdout.trim()).toBe(path.join(agentContextHome, path.basename(cwd)));
     });
   });
 });

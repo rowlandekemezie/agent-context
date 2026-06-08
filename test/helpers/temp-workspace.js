@@ -4,10 +4,10 @@ import path from "node:path";
 
 export async function withTempWorkspace(callback) {
   const root = await realpath(
-    await mkdtemp(path.join(os.tmpdir(), "ai-work-test-")),
+    await mkdtemp(path.join(os.tmpdir(), "agent-context-test-")),
   );
   const cwd = path.join(root, "workspace");
-  const aiWorkHome = path.join(root, "ai-work-home");
+  const agentContextHome = path.join(root, "agent-context-home");
 
   try {
     await mkdir(cwd, { recursive: true });
@@ -15,13 +15,13 @@ export async function withTempWorkspace(callback) {
     return await callback({
       root,
       cwd,
-      aiWorkHome,
+      agentContextHome,
       projectName: "test-project",
       env: {
-        AI_WORK_HOME: aiWorkHome,
-        AI_WORK_PROJECT: "test-project",
+        AGENT_CONTEXT_HOME: agentContextHome,
+        AGENT_CONTEXT_PROJECT: "test-project",
       },
-      projectDir: path.join(aiWorkHome, "test-project"),
+      projectDir: path.join(agentContextHome, "test-project"),
     });
   } finally {
     await rm(root, { recursive: true, force: true });

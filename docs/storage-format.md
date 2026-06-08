@@ -1,19 +1,19 @@
 # Storage Format
 
-By default, `ai-work` writes to:
+By default, `agent-context` writes to:
 
 ```txt
-~/.config/ai-work/dev-plans/<project-name>/
+~/.config/agent-context/projects/<project-name>/
 ```
 
-The default project name is the basename of the current working directory. Override it with `AI_WORK_PROJECT`.
+The default project name is the basename of the current working directory. Override it with `AGENT_CONTEXT_PROJECT`.
 
-Override the storage root with `AI_WORK_HOME`.
+Override the storage root with `AGENT_CONTEXT_HOME`.
 
 ## Directory Layout
 
 ```txt
-<AI_WORK_HOME>/<project-name>/
+<AGENT_CONTEXT_HOME>/<project-name>/
   current-focus.md
   QUIRKS.md
   architecture/
@@ -53,7 +53,7 @@ Consumed handoffs moved out of the pending queue.
 
 ### `features/`, `architecture/`, `research/`
 
-Dated planning notes created by `ai-work doc create`.
+Dated planning notes created by `agent-context doc create`.
 
 ## Stability
 

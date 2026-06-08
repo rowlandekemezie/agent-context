@@ -1,10 +1,10 @@
 {
-  "name": "ai-work",
+  "name": "agent-context",
   "version": "0.1.0",
   "description": "Local-first Markdown memory for AI-assisted software development.",
   "type": "module",
   "bin": {
-    "ai-work": "./dist/cli.js"
+    "agent-context": "./dist/cli.js"
   },
   "files": [
     "dist",

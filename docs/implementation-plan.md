@@ -1,6 +1,6 @@
-# ai-work Implementation Plan
+# agent-context Implementation Plan
 
-`ai-work` is being shaped into a small, credible OSS CLI for local-first Markdown memory in AI-assisted software development.
+`agent-context` is being shaped into a small, credible OSS CLI for local-first Markdown memory in AI-assisted software development.
 
 ## Product Positioning
 
@@ -12,7 +12,7 @@ Core promise:
 
 > Keep current focus, project quirks, progress logs, handoffs, and planning docs in durable Markdown so humans and AI agents can resume work with context.
 
-`ai-work` is:
+`agent-context` is:
 
 - local-first
 - Markdown-based
@@ -20,7 +20,7 @@ Core promise:
 - agent-consumable
 - easy to inspect and edit by hand
 
-`ai-work` is not:
+`agent-context` is not:
 
 - a task manager
 - a Jira/Linear replacement
@@ -99,7 +99,7 @@ Test principles:
 
 - Run the real CLI in subprocesses.
 - Use temporary directories for filesystem isolation.
-- Set `AI_WORK_HOME` and `AI_WORK_PROJECT` in tests.
+- Set `AGENT_CONTEXT_HOME` and `AGENT_CONTEXT_PROJECT` in tests.
 - Never write tests against the real user config directory.
 - Prefer Gherkin-style test names without introducing Cucumber yet.
 
@@ -120,9 +120,9 @@ Tasks:
 
 Acceptance criteria:
 
-- `ai-work --help` exits successfully and prints command reference.
-- `ai-work help` exits successfully and prints command reference.
-- `ai-work --version` exits successfully and prints package version.
+- `agent-context --help` exits successfully and prints command reference.
+- `agent-context help` exits successfully and prints command reference.
+- `agent-context --version` exits successfully and prints package version.
 - Existing characterization tests still pass.
 
 ## Milestone 4 — CI and Package Validation
@@ -174,7 +174,7 @@ Status: not started.
 Current default:
 
 ```txt
-~/.config/ai-work/dev-plans/<project-name>/
+~/.config/agent-context/projects/<project-name>/
 ```
 
 Open question: should OSS users be able to opt into repo-local storage?
@@ -182,13 +182,13 @@ Open question: should OSS users be able to opt into repo-local storage?
 Possible future option:
 
 ```sh
-ai-work init --local
+agent-context init --local
 ```
 
 which could create:
 
 ```txt
-.ai-work/
+.agent-context/
 ```
 
 Decision guidance:
@@ -244,7 +244,7 @@ Build approach:
 | Risk | Mitigation |
 |---|---|
 | TypeScript migration breaks behavior | Characterization tests first |
-| Tests write to real user files | Use temp dirs and `AI_WORK_HOME` in every test |
+| Tests write to real user files | Use temp dirs and `AGENT_CONTEXT_HOME` in every test |
 | Gherkin tooling adds friction | Use Gherkin-style Vitest names only |
 | Project becomes overengineered | Keep scope to CLI + Markdown memory |
 | Storage layout changes break users | Document layout and defer layout changes |
@@ -254,4 +254,4 @@ Build approach:
 
 Status: complete for first pass.
 
-Added `skills/ai-work/SKILL.md` plus `docs/skill-installation.md` so users can install a Zed agent skill that teaches agents how to restore context, append progress, and create handoffs with the CLI.
+Added `skills/agent-context/SKILL.md` plus `docs/skill-installation.md` so users can install a Zed agent skill that teaches agents how to restore context, append progress, and create handoffs with the CLI.

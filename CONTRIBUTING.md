@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for your interest in `ai-work`.
+Thanks for your interest in `agent-context`.
 
 ## Development Setup
 
@@ -13,7 +13,7 @@ pnpm test
 
 ## Project Direction
 
-`ai-work` is intentionally small: a local-first Markdown memory CLI for AI-assisted software development.
+`agent-context` is intentionally small: a local-first Markdown memory CLI for AI-assisted software development.
 
 Before adding features, prefer improvements that make the current CLI easier to understand, test, and maintain.
 
@@ -25,10 +25,10 @@ Prefer black-box characterization tests that:
 
 - run the real CLI in a subprocess
 - use temporary directories
-- set `AI_WORK_HOME`
+- set `AGENT_CONTEXT_HOME`
 - assert generated files and command output
 
-Do not write tests that touch a real user `~/.config/ai-work` directory.
+Do not write tests that touch a real user `~/.config/agent-context` directory.
 
 ## TypeScript Migration
 

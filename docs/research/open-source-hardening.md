@@ -1,6 +1,6 @@
 # Open Source Hardening Notes
 
-This document captures the project-hardening guidance for turning `ai-work` from a personal script into a small OSS CLI.
+This document captures the project-hardening guidance for turning `agent-context` from a personal script into a small OSS CLI.
 
 ## Target Users
 
@@ -41,9 +41,9 @@ Do not add these before the core CLI is polished:
 
 Use Vitest. Keep the most important tests black-box:
 
-- spawn `node ai-work.mjs ...`
+- spawn `node dist/cli.js ...`
 - set temp `cwd`
-- set temp `AI_WORK_HOME`
+- set temp `AGENT_CONTEXT_HOME`
 - assert stdout/stderr/exit code
 - inspect generated Markdown files
 
@@ -95,4 +95,4 @@ Before `0.1.0` public release:
 
 ## Agent Skill
 
-The repository includes `skills/ai-work/SKILL.md`. This provides reusable agent instructions for using the CLI as durable project memory and includes installation instructions in `docs/skill-installation.md`.
+The repository includes `skills/agent-context/SKILL.md`. This provides reusable agent instructions for using the CLI as durable project memory and includes installation instructions in `docs/skill-installation.md`.

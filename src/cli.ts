@@ -9,7 +9,7 @@ import { createWorkspaceContext, ensureBaseFiles } from './core/workspace.js';
 export const packageVersion = '0.1.0';
 
 export function usage(): string {
-  return `ai-work ${packageVersion}\n\nLocal-first Markdown memory for AI-assisted software development.\n\nUsage:\n  ai-work <command> [args]\n\nCommands:\n  ai-work init\n  ai-work info\n  ai-work context\n  ai-work progress path\n  ai-work progress list [n]\n  ai-work progress append [file]\n  ai-work handoff create <slug>\n  ai-work handoff list\n  ai-work handoff consume\n  ai-work doc create <feature|architecture|research> <slug>\n  ai-work doc list <feature|architecture|research> [n]\n\nOptions:\n  -h, --help       Show this help message\n  -v, --version    Show the current version\n\nEnvironment:\n  AI_WORK_HOME     Base directory for generated work plans\n  AI_WORK_PROJECT  Project name used under AI_WORK_HOME`;
+  return `agent-context ${packageVersion}\n\nLocal-first Markdown memory for AI-assisted software development.\n\nUsage:\n  agent-context <command> [args]\n\nCommands:\n  agent-context init\n  agent-context info\n  agent-context context\n  agent-context progress path\n  agent-context progress list [n]\n  agent-context progress append [file]\n  agent-context handoff create <slug>\n  agent-context handoff list\n  agent-context handoff consume\n  agent-context doc create <feature|architecture|research> <slug>\n  agent-context doc list <feature|architecture|research> [n]\n\nOptions:\n  -h, --help       Show this help message\n  -v, --version    Show the current version\n\nEnvironment:\n  AGENT_CONTEXT_HOME     Base directory for generated work plans\n  AGENT_CONTEXT_PROJECT  Project name used under AGENT_CONTEXT_HOME`;
 }
 
 function unknownCommandMessage(command: string | undefined): string {
@@ -46,7 +46,7 @@ export async function run(argv = process.argv, env = process.env, cwd = process.
       JSON.stringify(
         {
           root: ctx.root,
-          aiWorkHome: ctx.aiWorkHome,
+          agentContextHome: ctx.agentContextHome,
           projectName: ctx.projectName,
           projectDir: ctx.projectDir,
           currentFocusPath: ctx.currentFocusPath,

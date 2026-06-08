@@ -1,22 +1,22 @@
-# ai-work
+# agent-context
 
 Local-first Markdown memory for AI-assisted software development.
 
 ## Why
 
-AI coding agents are useful, but sessions lose context. `ai-work` creates and manages simple Markdown files for project focus, quirks, progress logs, handoffs, and lightweight planning docs so humans and agents can resume work with shared context.
+AI coding agents are useful, but sessions lose context. `agent-context` creates and manages simple Markdown files for project focus, quirks, progress logs, handoffs, and lightweight planning docs so humans and agents can resume work with shared context.
 
 No database. No service. No lock-in.
 
 ## Install
 
-`ai-work` is package-ready, but you do not need to wait for a formal npm release to use it.
+`agent-context` is package-ready, but you do not need to wait for a formal npm release to use it.
 
 ### Option 1: use from a local checkout
 
 ```sh
-git clone <repo-url> ai-work
-cd ai-work
+git clone <repo-url> agent-context
+cd agent-context
 pnpm install
 pnpm run build
 node dist/cli.js --help
@@ -31,8 +31,8 @@ From a local checkout:
 pnpm install
 pnpm run build
 pnpm link --global
-ai-work --help
-ai-work init
+agent-context --help
+agent-context init
 ```
 
 This is the recommended path while the project is pre-release.
@@ -42,13 +42,13 @@ This is the recommended path while the project is pre-release.
 After the repository is pushed to GitHub, install directly from the repo:
 
 ```sh
-pnpm add --global github:rowlandekemezie/ai-work
+pnpm add --global github:rowlandekemezie/agent-context
 ```
 
 or:
 
 ```sh
-npm install --global github:rowlandekemezie/ai-work
+npm install --global github:rowlandekemezie/agent-context
 ```
 
 Until an npm package exists, prefer local linking or GitHub installation.
@@ -56,20 +56,20 @@ Until an npm package exists, prefer local linking or GitHub installation.
 ## Quick start
 
 ```sh
-ai-work init
-ai-work info
-ai-work context
-printf 'Implemented CLI scaffold.' | ai-work progress append
-ai-work handoff create next-agent
-ai-work doc create feature durable-context
+agent-context init
+agent-context info
+agent-context context
+printf 'Implemented CLI scaffold.' | agent-context progress append
+agent-context handoff create next-agent
+agent-context doc create feature durable-context
 ```
 
 ## Generated structure
 
-By default, `ai-work` stores files under:
+By default, `agent-context` stores files under:
 
 ```txt
-~/.config/ai-work/dev-plans/<project-name>/
+~/.config/agent-context/projects/<project-name>/
   current-focus.md
   QUIRKS.md
   architecture/
@@ -83,30 +83,30 @@ By default, `ai-work` stores files under:
 
 You can override storage with environment variables:
 
-- `AI_WORK_HOME`: base directory for generated work plans
-- `AI_WORK_PROJECT`: project name used under `AI_WORK_HOME`
+- `AGENT_CONTEXT_HOME`: base directory for generated work plans
+- `AGENT_CONTEXT_PROJECT`: project name used under `AGENT_CONTEXT_HOME`
 
 ## Commands
 
 | Command | Purpose |
 |---|---|
-| `ai-work --help` / `ai-work help` | Show command help |
-| `ai-work --version` | Show the package version |
-| `ai-work init` | Create the project memory layout and print its path |
-| `ai-work info` | Print JSON describing paths and directories |
-| `ai-work context` | Print current focus, quirks, and recent progress |
-| `ai-work progress path` | Ensure and print today’s progress file path |
-| `ai-work progress list [n]` | List recent progress files |
-| `ai-work progress append [file]` | Append progress from a file or stdin |
-| `ai-work handoff create <slug>` | Create a pending handoff template |
-| `ai-work handoff list` | List pending handoffs |
-| `ai-work handoff consume` | Print pending handoffs and move them to completed |
-| `ai-work doc create <feature\|architecture\|research> <slug>` | Create a dated planning doc |
-| `ai-work doc list <feature\|architecture\|research> [n]` | List recent planning docs |
+| `agent-context --help` / `agent-context help` | Show command help |
+| `agent-context --version` | Show the package version |
+| `agent-context init` | Create the project memory layout and print its path |
+| `agent-context info` | Print JSON describing paths and directories |
+| `agent-context context` | Print current focus, quirks, and recent progress |
+| `agent-context progress path` | Ensure and print today’s progress file path |
+| `agent-context progress list [n]` | List recent progress files |
+| `agent-context progress append [file]` | Append progress from a file or stdin |
+| `agent-context handoff create <slug>` | Create a pending handoff template |
+| `agent-context handoff list` | List pending handoffs |
+| `agent-context handoff consume` | Print pending handoffs and move them to completed |
+| `agent-context doc create <feature\|architecture\|research> <slug>` | Create a dated planning doc |
+| `agent-context doc list <feature\|architecture\|research> [n]` | List recent planning docs |
 
 ## Philosophy
 
-`ai-work` is intentionally small:
+`agent-context` is intentionally small:
 
 - local-first
 - Markdown-based
@@ -138,11 +138,11 @@ The current test strategy is characterization-first: lock down existing CLI beha
 
 ## Agent skill
 
-This repo includes an optional Zed agent skill in `skills/ai-work`. Install it with:
+This repo includes an optional Zed agent skill in `skills/agent-context`. Install it with:
 
 ```sh
 mkdir -p ~/.agents/skills
-cp -R skills/ai-work ~/.agents/skills/ai-work
+cp -R skills/agent-context ~/.agents/skills/agent-context
 ```
 
 See [Agent skill installation](docs/skill-installation.md).

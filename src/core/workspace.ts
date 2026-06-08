@@ -3,7 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 
-export type AiWorkDirs = {
+export type AgentContextDirs = {
   architecture: string;
   features: string;
   handoffs: string;
@@ -16,10 +16,10 @@ export type AiWorkDirs = {
 export type WorkspaceContext = {
   root: string;
   home: string;
-  aiWorkHome: string;
+  agentContextHome: string;
   projectName: string;
   projectDir: string;
-  dirs: AiWorkDirs;
+  dirs: AgentContextDirs;
   currentFocusPath: string;
   quirksPath: string;
 };
@@ -27,10 +27,10 @@ export type WorkspaceContext = {
 export function createWorkspaceContext(env: NodeJS.ProcessEnv = process.env, cwd = process.cwd()): WorkspaceContext {
   const root = cwd;
   const home = os.homedir();
-  const aiWorkHome = env.AI_WORK_HOME || path.join(home, '.config', 'ai-work', 'dev-plans');
-  const projectName = env.AI_WORK_PROJECT || path.basename(root);
-  const projectDir = path.join(aiWorkHome, projectName);
-  const dirs: AiWorkDirs = {
+  const agentContextHome = env.AGENT_CONTEXT_HOME || path.join(home, '.config', 'agent-context', 'projects');
+  const projectName = env.AGENT_CONTEXT_PROJECT || path.basename(root);
+  const projectDir = path.join(agentContextHome, projectName);
+  const dirs: AgentContextDirs = {
     architecture: path.join(projectDir, 'architecture'),
     features: path.join(projectDir, 'features'),
     handoffs: path.join(projectDir, 'subtask-handoffs'),
@@ -43,7 +43,7 @@ export function createWorkspaceContext(env: NodeJS.ProcessEnv = process.env, cwd
   return {
     root,
     home,
-    aiWorkHome,
+    agentContextHome,
     projectName,
     projectDir,
     dirs,
