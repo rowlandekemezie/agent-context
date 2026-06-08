@@ -47,5 +47,13 @@
     "handoff",
     "local-first"
   ],
-  "author": "Juliana Ekemezie"
+  "author": "Rowland Ekemezie",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rowlandekemezie/agent-context.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rowlandekemezie/agent-context/issues"
+  },
+  "homepage": "https://github.com/rowlandekemezie/agent-context#readme"
 }

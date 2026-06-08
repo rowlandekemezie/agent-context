@@ -13,8 +13,6 @@ pnpm test
 
 `agent-context` should stay small: a local-first Markdown context CLI for AI-assisted work.
 
-Use `pnpm run check` before committing; it runs TypeScript checks and Oxlint.
-
 Prefer changes that improve:
 
 - CLI clarity
@@ -22,7 +20,17 @@ Prefer changes that improve:
 - test coverage
 - documentation accuracy
 
-Avoid adding cloud sync, AI provider integrations, databases, plugin systems, or workflow-platform features until the core CLI is stable.
+Avoid cloud sync, AI provider integrations, databases, plugin systems, or workflow-platform features until the core CLI is stable.
+
+## Checks before opening a PR
+
+```sh
+pnpm run check
+pnpm test
+pnpm run pack:dry-run
+```
+
+`pnpm run check` runs TypeScript checks and Oxlint.
 
 ## Build output
 
