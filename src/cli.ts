@@ -20,6 +20,18 @@ function unknownCommandMessage(command: string | undefined): string {
   return `Unknown command: ${command}\n\n${usage()}`;
 }
 
+function docTypeError(): string {
+  return 'Doc type must be "feature", "architecture", or "research".';
+}
+
+function isDocType(value: string | undefined): boolean {
+  return value === 'feature' || value === 'architecture' || value === 'research';
+}
+
+function commandName(command: string | undefined, subcommand: string | undefined): string | undefined {
+  return [command, subcommand].filter(Boolean).join(' ') || undefined;
+}
+
 export async function run(argv = process.argv, env = process.env, cwd = process.cwd()): Promise<number> {
   const [, , command, subcommand, ...args] = argv;
 
@@ -31,6 +43,24 @@ export async function run(argv = process.argv, env = process.env, cwd = process.
   if (command === '--version' || command === '-v') {
     console.log(packageVersion);
     return 0;
+  }
+
+  if (command === 'doc' && (subcommand === 'create' || subcommand === 'list') && !isDocType(args[0])) {
+    console.error(docTypeError());
+    return 1;
+  }
+
+  const isKnownCommand =
+    command === 'init' ||
+    command === 'info' ||
+    command === 'context' ||
+    (command === 'progress' && (subcommand === 'path' || subcommand === 'list' || subcommand === 'append')) ||
+    (command === 'handoff' && (subcommand === 'create' || subcommand === 'list' || subcommand === 'consume')) ||
+    (command === 'doc' && (subcommand === 'create' || subcommand === 'list'));
+
+  if (!isKnownCommand) {
+    console.error(unknownCommandMessage(commandName(command, subcommand)));
+    return 1;
   }
 
   const ctx = createWorkspaceContext(env, cwd);

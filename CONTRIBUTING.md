@@ -13,6 +13,8 @@ pnpm test
 
 `agent-context` should stay small: a local-first Markdown context CLI for AI-assisted work.
 
+Use `pnpm run check` before committing; it runs TypeScript checks and Oxlint.
+
 Prefer changes that improve:
 
 - CLI clarity

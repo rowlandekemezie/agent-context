@@ -22,17 +22,20 @@
   "packageManager": "pnpm@11.2.2",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "check": "tsc --noEmit && tsc -p tsconfig.test.json",
+    "check": "tsc --noEmit && tsc -p tsconfig.test.json && pnpm run lint",
     "test": "pnpm run build && vitest run",
     "test:watch": "vitest",
-    "coverage": "pnpm run build && vitest run --coverage",
-    "pack:dry-run": "pnpm run build && pnpm pack --dry-run"
+    "test:coverage": "pnpm run build && vitest run --coverage",
+    "pack:dry-run": "pnpm pack --dry-run",
+    "lint": "oxlint .",
+    "prepare": "pnpm run build"
   },
   "devDependencies": {
+    "@types/node": "latest",
     "@vitest/coverage-v8": "latest",
-    "vitest": "latest",
+    "oxlint": "^1.68.0",
     "typescript": "latest",
-    "@types/node": "latest"
+    "vitest": "latest"
   },
   "keywords": [
     "ai",
