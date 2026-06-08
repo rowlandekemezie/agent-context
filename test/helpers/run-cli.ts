@@ -5,7 +5,19 @@ import path from 'node:path';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const cliPath = path.join(repoRoot, 'dist', 'cli.js');
 
-export function runCli(args, options = {}) {
+type RunCliOptions = {
+  cwd?: string;
+  env?: NodeJS.ProcessEnv;
+  input?: string;
+};
+
+type RunCliResult = {
+  exitCode: number | null;
+  stdout: string;
+  stderr: string;
+};
+
+export function runCli(args: string[], options: RunCliOptions = {}): Promise<RunCliResult> {
   const {
     cwd = repoRoot,
     env = {},
@@ -28,10 +40,10 @@ export function runCli(args, options = {}) {
 
     child.stdout.setEncoding('utf8');
     child.stderr.setEncoding('utf8');
-    child.stdout.on('data', (chunk) => {
+    child.stdout.on('data', (chunk: string) => {
       stdout += chunk;
     });
-    child.stderr.on('data', (chunk) => {
+    child.stderr.on('data', (chunk: string) => {
       stderr += chunk;
     });
     child.on('error', reject);
@@ -39,10 +51,6 @@ export function runCli(args, options = {}) {
       resolve({ exitCode, stdout, stderr });
     });
 
-    if (input !== undefined) {
-      child.stdin.end(input);
-    } else {
-      child.stdin.end();
-    }
+    child.stdin.end(input);
   });
 }

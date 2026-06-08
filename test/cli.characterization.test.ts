@@ -4,12 +4,12 @@ import path from 'node:path';
 import { runCli } from './helpers/run-cli.js';
 import { withTempWorkspace } from './helpers/temp-workspace.js';
 
-async function exists(filePath) {
+async function exists(filePath: string): Promise<boolean> {
   try {
     await stat(filePath);
     return true;
   } catch (error) {
-    if (error && error.code === 'ENOENT') {
+    if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
       return false;
     }
     throw error;
