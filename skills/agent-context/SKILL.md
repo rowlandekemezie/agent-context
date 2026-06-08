@@ -1,39 +1,37 @@
 ---
 name: agent-context
-description: Uses the agent-context CLI as durable Markdown memory for AI-assisted software projects. Use when restoring project context, tracking progress, creating handoffs, recording planning docs, or when the user mentions agent-context, current focus, progress logs, or agent handoffs.
+description: Uses the agent-context CLI as durable Markdown memory for AI-assisted software projects. Use when restoring project context, recording progress, creating handoffs, creating planning docs, or when the user mentions agent-context, current focus, progress logs, or agent handoffs.
 ---
 
 # agent-context
 
-Use `agent-context` to maintain project memory in local Markdown files so humans and agents can resume work across sessions.
+Use `agent-context` to keep project context in local Markdown files across agent sessions.
 
-## Quick start
-
-At the beginning of a session:
+## Start a session
 
 ```sh
 agent-context context
 ```
 
-When you need paths or environment details:
+Use the output to understand current focus, quirks, and recent progress before changing code.
+
+## Record progress
 
 ```sh
-agent-context info
+printf 'Completed <change>. Validation: <commands/results>.' | agent-context progress append
 ```
 
-After meaningful progress:
+Append progress after meaningful changes, validation runs, or decisions.
+
+## Create a handoff
 
 ```sh
-printf 'Completed <specific change>. Validation: <commands/results>.' | agent-context progress append
+agent-context handoff create next-session
 ```
 
-For another agent or future session:
+Use handoffs when work is unfinished or another agent/session should continue.
 
-```sh
-agent-context handoff create next-agent
-```
-
-For planning docs:
+## Create planning docs
 
 ```sh
 agent-context doc create feature my-feature
@@ -41,21 +39,12 @@ agent-context doc create architecture my-decision
 agent-context doc create research my-topic
 ```
 
-## Workflow
+## Safety
 
-1. Run `agent-context context` before starting non-trivial work.
-2. Treat `current-focus.md` as the source of current objective, open questions, and next step.
-3. Use `QUIRKS.md` for project-specific constraints and gotchas.
-4. Append progress after completed milestones, validation runs, or important decisions.
-5. Create handoffs before stopping with unresolved work.
-6. Create docs for feature, architecture, or research notes that should outlive the chat.
-
-## Safety rules
-
-- Do not store secrets, API keys, tokens, or private credentials in agent-context files.
-- Do not overwrite user-edited memory files unless the user asks.
-- Prefer append-only progress updates over rewriting history.
-- Use `AGENT_CONTEXT_HOME` and `AGENT_CONTEXT_PROJECT` when testing to avoid touching real user memory.
+- Do not store secrets, tokens, or credentials.
+- Do not overwrite user-edited memory files unless asked.
+- Prefer append-only progress updates.
+- In tests, set `AGENT_CONTEXT_HOME` and `AGENT_CONTEXT_PROJECT` to temporary values.
 
 ## Install this skill
 
@@ -65,5 +54,3 @@ From the `agent-context` repository root:
 mkdir -p ~/.agents/skills
 cp -R skills/agent-context ~/.agents/skills/agent-context
 ```
-
-Then restart or reload the agent environment if required.

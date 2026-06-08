@@ -1,60 +1,44 @@
 # Storage Format
 
-By default, `agent-context` writes to:
+Default storage root:
 
 ```txt
-~/.config/agent-context/projects/<project-name>/
+~/.config/agent-context/projects
 ```
 
-The default project name is the basename of the current working directory. Override it with `AGENT_CONTEXT_PROJECT`.
-
-Override the storage root with `AGENT_CONTEXT_HOME`.
-
-## Directory Layout
+Project storage path:
 
 ```txt
 <AGENT_CONTEXT_HOME>/<project-name>/
-  current-focus.md
-  QUIRKS.md
-  architecture/
-  features/
-  progress-updates/
-    YYYY-MM-DD-progress.md
-  research/
-  subtask-handoffs/
-    pending/
-      YYYY-MM-DD-HH-MM-SS-slug.md
-    completed/
-      YYYY-MM-DD/
-        YYYY-MM-DD-HH-MM-SS-slug.md
 ```
 
-## File Contracts
+`project-name` defaults to the current directory name. Override it with `AGENT_CONTEXT_PROJECT`.
 
-### `current-focus.md`
+## Layout
 
-The primary session-restoration file. It records project metadata, current goal, open questions, and next step.
+```txt
+current-focus.md
+QUIRKS.md
+architecture/
+features/
+progress-updates/
+  YYYY-MM-DD-progress.md
+research/
+subtask-handoffs/
+  pending/
+    YYYY-MM-DD-HH-MM-SS-slug.md
+  completed/
+    YYYY-MM-DD/
+      YYYY-MM-DD-HH-MM-SS-slug.md
+```
 
-### `QUIRKS.md`
+## Files
 
-Project-specific constraints, patterns, reminders, and gotchas.
+- `current-focus.md`: current objective, questions, and next step.
+- `QUIRKS.md`: project constraints and gotchas.
+- `progress-updates/*.md`: dated progress entries.
+- `subtask-handoffs/pending/*.md`: handoffs waiting to be consumed.
+- `subtask-handoffs/completed/<date>/*.md`: consumed handoffs.
+- `features/`, `architecture/`, `research/`: dated planning docs.
 
-### `progress-updates/*.md`
-
-Daily append-only progress logs. The work date rolls back to the prior day before 06:00 local time.
-
-### `subtask-handoffs/pending/*.md`
-
-Templates intended for another agent or future session.
-
-### `subtask-handoffs/completed/YYYY-MM-DD/*.md`
-
-Consumed handoffs moved out of the pending queue.
-
-### `features/`, `architecture/`, `research/`
-
-Dated planning notes created by `agent-context doc create`.
-
-## Stability
-
-The current storage layout is part of the CLI’s user-facing contract. Future layout changes should be documented and migration-aware.
+The storage layout is user-facing. Treat changes as migrations.

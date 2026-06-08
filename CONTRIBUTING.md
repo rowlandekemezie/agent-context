@@ -1,8 +1,6 @@
 # Contributing
 
-Thanks for your interest in `agent-context`.
-
-## Development Setup
+## Setup
 
 ```sh
 pnpm install
@@ -11,25 +9,26 @@ pnpm run check
 pnpm test
 ```
 
-## Project Direction
+## Scope
 
-`agent-context` is intentionally small: a local-first Markdown memory CLI for AI-assisted software development.
+`agent-context` should stay small: a local-first Markdown context CLI for AI-assisted work.
 
-Before adding features, prefer improvements that make the current CLI easier to understand, test, and maintain.
+Prefer changes that improve:
+
+- CLI clarity
+- filesystem safety
+- test coverage
+- documentation accuracy
+
+Avoid adding cloud sync, AI provider integrations, databases, plugin systems, or workflow-platform features until the core CLI is stable.
 
 ## Testing
 
-Tests should protect user-facing CLI behavior.
+Tests should protect user-facing CLI behavior:
 
-Prefer black-box characterization tests that:
-
-- run the real CLI in a subprocess
+- run the built CLI in a subprocess
 - use temporary directories
-- set `AGENT_CONTEXT_HOME`
-- assert generated files and command output
+- set `AGENT_CONTEXT_HOME` and `AGENT_CONTEXT_PROJECT`
+- assert stdout, stderr, exit code, and generated files
 
-Do not write tests that touch a real user `~/.config/agent-context` directory.
-
-## TypeScript Migration
-
-Do not migrate code to TypeScript until the current behavior is covered by characterization tests and CI is passing.
+Never write tests against a real `~/.config/agent-context` directory.

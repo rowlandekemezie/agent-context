@@ -1,8 +1,8 @@
 # Agent Skill Installation
 
-`agent-context` ships with an optional Zed agent skill that teaches agents how to use the CLI as durable project memory.
+`agent-context` includes a Zed agent skill that teaches agents to use the CLI as durable project memory.
 
-## Install from this repo
+## Install
 
 From the repository root:
 
@@ -11,24 +11,11 @@ mkdir -p ~/.agents/skills
 cp -R skills/agent-context ~/.agents/skills/agent-context
 ```
 
-Restart or reload the agent environment if needed, then ask the agent to use the `agent-context` skill.
+Restart or reload the agent environment if needed.
 
-## What the skill does
+## CLI requirement
 
-The skill instructs agents to:
-
-- restore context with `agent-context context`
-- inspect paths with `agent-context info`
-- record meaningful progress with `agent-context progress append`
-- create handoffs with `agent-context handoff create`
-- create planning notes with `agent-context doc create`
-- avoid storing secrets in generated Markdown
-
-## Requirements
-
-The CLI should be available on `PATH` as `agent-context`, or the agent should know the path to the built CLI.
-
-Recommended pre-release setup:
+The CLI should be available as `agent-context`:
 
 ```sh
 pnpm install
@@ -37,8 +24,12 @@ pnpm link --global
 agent-context --help
 ```
 
-If you do not link globally, use the built CLI directly:
+## What the skill does
 
-```sh
-node dist/cli.js --help
-```
+It instructs agents to:
+
+- restore context with `agent-context context`
+- record progress with `agent-context progress append`
+- create handoffs with `agent-context handoff create`
+- create planning docs with `agent-context doc create`
+- avoid storing secrets in generated Markdown
