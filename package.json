@@ -1,0 +1,44 @@
+{
+  "name": "ai-work",
+  "version": "0.1.0",
+  "description": "Local-first Markdown memory for AI-assisted software development.",
+  "type": "module",
+  "bin": {
+    "ai-work": "./ai-work.mjs"
+  },
+  "files": [
+    "ai-work.mjs",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "docs"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@11.2.2",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "check": "node --check ai-work.mjs",
+    "pack:dry-run": "pnpm pack --dry-run"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "latest",
+    "vitest": "latest"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "cli",
+    "markdown",
+    "developer-tools",
+    "context",
+    "handoff",
+    "local-first"
+  ],
+  "author": "Juliana Ekemezie"
+}
