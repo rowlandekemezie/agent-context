@@ -96,6 +96,16 @@ Environment overrides:
 
 See [docs/commands.md](docs/commands.md) for examples.
 
+## Ownership model
+
+`agent-context` treats some files as agent-managed operational memory and others as human-directed project intent.
+
+- Agents can freely append to `progress-updates/` and create handoffs.
+- Agents should not silently rewrite `current-focus.md` or `QUIRKS.md`; those represent canonical intent and durable constraints.
+- Feature, architecture, and research docs are shared working documents.
+
+See [docs/ownership-model.md](docs/ownership-model.md).
+
 ## Agent skill
 
 This repo includes a Zed agent skill at `skills/agent-context`.
@@ -123,5 +133,6 @@ pnpm run pack:dry-run
 
 - [Command reference](docs/commands.md)
 - [Storage format](docs/storage-format.md)
+- [Ownership model](docs/ownership-model.md)
 - [Contributing](CONTRIBUTING.md)
 - [Roadmap](docs/implementation-plan.md)

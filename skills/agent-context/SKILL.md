@@ -39,11 +39,13 @@ agent-context doc create architecture my-decision
 agent-context doc create research my-topic
 ```
 
-## Safety
+## Ownership and safety
 
+- Append progress freely after meaningful work.
+- Create handoffs before stopping with unresolved work.
+- Do not silently rewrite `current-focus.md` or `QUIRKS.md`; ask, make an explicitly requested edit, or propose the update in progress/handoff notes.
+- Treat feature, architecture, and research docs as shared drafts unless the user says otherwise.
 - Do not store secrets, tokens, or credentials.
-- Do not overwrite user-edited memory files unless asked.
-- Prefer append-only progress updates.
 - In tests, set `AGENT_CONTEXT_HOME` and `AGENT_CONTEXT_PROJECT` to temporary values.
 
 ## Install this skill

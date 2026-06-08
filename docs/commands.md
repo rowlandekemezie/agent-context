@@ -67,3 +67,7 @@ Creates a dated planning doc.
 ### `agent-context doc list <feature|architecture|research> [n]`
 
 Lists recent planning docs. Defaults to `10`.
+
+## Ownership
+
+Progress and handoffs are safe for agents to append/create during normal work. `current-focus.md` and `QUIRKS.md` should be changed only with explicit user direction or review. See [Ownership Model](ownership-model.md).

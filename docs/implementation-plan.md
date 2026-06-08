@@ -11,6 +11,7 @@ Completed:
 - command help/version behavior
 - docs for commands and storage
 - Zed agent skill in `skills/agent-context`
+- documented ownership model for agent-managed vs human-directed context
 - GitHub Actions CI workflow
 
 ## Near-term work
