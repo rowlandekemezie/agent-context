@@ -42,26 +42,16 @@ This is the recommended path while the project is pre-release.
 After the repository is pushed to GitHub, install directly from the repo:
 
 ```sh
-pnpm add --global github:<owner>/ai-work
+pnpm add --global github:rowlandekemezie/ai-work
 ```
 
 or:
 
 ```sh
-npm install --global github:<owner>/ai-work
+npm install --global github:rowlandekemezie/ai-work
 ```
 
-Replace `<owner>` with the GitHub account or organization.
-
-### Option 4: install from npm
-
-Once published to npm:
-
-```sh
-npm install --global ai-work
-```
-
-Until then, prefer local linking or GitHub installation.
+Until an npm package exists, prefer local linking or GitHub installation.
 
 ## Quick start
 
