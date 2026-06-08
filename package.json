@@ -26,7 +26,7 @@
     "test": "pnpm run build && vitest run",
     "test:watch": "vitest",
     "test:coverage": "pnpm run build && vitest run --coverage",
-    "pack:dry-run": "pnpm run build && npm pack --dry-run",
+    "pack:dry-run": "pnpm run build && rm -rf .tmp-pack && pnpm pack --pack-destination .tmp-pack --json && rm -rf .tmp-pack",
     "lint": "oxlint .",
     "prepare": "pnpm run build"
   },
