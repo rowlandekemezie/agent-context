@@ -6,6 +6,7 @@ Thanks for your interest in `ai-work`.
 
 ```sh
 pnpm install
+pnpm run build
 pnpm run check
 pnpm test
 ```

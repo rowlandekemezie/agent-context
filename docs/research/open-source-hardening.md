@@ -88,7 +88,11 @@ Before `0.1.0` public release:
 - [ ] CI exists and passes remotely
 - [x] `--help` behavior exists
 - [x] `--version` behavior exists
-- [ ] command docs exist
-- [ ] storage format docs exist
+- [x] command docs exist
+- [x] storage format docs exist
 - [ ] GitHub repo URL is added to package metadata
 - [ ] package name availability is confirmed
+
+## Agent Skill
+
+The repository includes `skills/ai-work/SKILL.md`. This provides reusable agent instructions for using the CLI as durable project memory and includes installation instructions in `docs/skill-installation.md`.

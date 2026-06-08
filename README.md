@@ -18,7 +18,8 @@ Or run from a local checkout:
 
 ```sh
 pnpm install
-pnpm exec ai-work init
+pnpm run build
+node dist/cli.js init
 ```
 
 ## Quick start
@@ -86,6 +87,9 @@ It is not a task manager, agent framework, sync service, database, or AI API wra
 
 ## Project docs
 
+- [Command reference](docs/commands.md)
+- [Storage format](docs/storage-format.md)
+- [Agent skill installation](docs/skill-installation.md)
 - [Implementation plan](docs/implementation-plan.md)
 - [Open source hardening notes](docs/research/open-source-hardening.md)
 - [Contributing](CONTRIBUTING.md)
@@ -94,8 +98,20 @@ It is not a task manager, agent framework, sync service, database, or AI API wra
 
 ```sh
 pnpm install
+pnpm run build
 pnpm run check
 pnpm test
 ```
 
 The current test strategy is characterization-first: lock down existing CLI behavior before refactoring or migrating to TypeScript.
+
+## Agent skill
+
+This repo includes an optional Zed agent skill in `skills/ai-work`. Install it with:
+
+```sh
+mkdir -p ~/.agents/skills
+cp -R skills/ai-work ~/.agents/skills/ai-work
+```
+
+See [Agent skill installation](docs/skill-installation.md).

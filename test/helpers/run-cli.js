@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
-const cliPath = path.join(repoRoot, 'ai-work.mjs');
+const cliPath = path.join(repoRoot, 'dist', 'cli.js');
 
 export function runCli(args, options = {}) {
   const {

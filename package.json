@@ -4,15 +4,16 @@
   "description": "Local-first Markdown memory for AI-assisted software development.",
   "type": "module",
   "bin": {
-    "ai-work": "./ai-work.mjs"
+    "ai-work": "./dist/cli.js"
   },
   "files": [
-    "ai-work.mjs",
+    "dist",
     "README.md",
     "LICENSE",
     "CHANGELOG.md",
     "CONTRIBUTING.md",
-    "docs"
+    "docs",
+    "skills"
   ],
   "engines": {
     "node": ">=20"
@@ -20,15 +21,18 @@
   "license": "MIT",
   "packageManager": "pnpm@11.2.2",
   "scripts": {
-    "test": "vitest run",
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc --noEmit",
+    "test": "pnpm run build && vitest run",
     "test:watch": "vitest",
-    "coverage": "vitest run --coverage",
-    "check": "node --check ai-work.mjs",
-    "pack:dry-run": "pnpm pack --dry-run"
+    "coverage": "pnpm run build && vitest run --coverage",
+    "pack:dry-run": "pnpm run build && pnpm pack --dry-run"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "latest",
-    "vitest": "latest"
+    "vitest": "latest",
+    "typescript": "latest",
+    "@types/node": "latest"
   },
   "keywords": [
     "ai",

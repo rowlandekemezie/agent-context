@@ -199,16 +199,16 @@ Decision guidance:
 
 ## Milestone 7 — TypeScript Migration
 
-Status: deferred.
+Status: complete for first pass.
 
 Goal: improve maintainability without changing user-facing behavior.
 
-Prerequisites:
+Prerequisites satisfied locally:
 
 - Characterization tests passing.
 - Help/version behavior covered.
-- CI passing.
 - Package dry run passing.
+- CI workflow present.
 
 Recommended structure:
 
@@ -249,3 +249,9 @@ Build approach:
 | Project becomes overengineered | Keep scope to CLI + Markdown memory |
 | Storage layout changes break users | Document layout and defer layout changes |
 | Package publishes wrong files | Keep `pnpm run pack:dry-run` in CI |
+
+## Milestone 8 — Agent Skill
+
+Status: complete for first pass.
+
+Added `skills/ai-work/SKILL.md` plus `docs/skill-installation.md` so users can install a Zed agent skill that teaches agents how to restore context, append progress, and create handoffs with the CLI.

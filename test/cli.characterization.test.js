@@ -254,14 +254,15 @@ describe('ai-work CLI characterization', () => {
     });
   });
 
-  it('Given an unknown command, when the CLI runs, then it prints usage and exits with failure', async () => {
+  it('Given an unknown command, when the CLI runs, then it prints an actionable usage error and exits with failure', async () => {
     await withTempWorkspace(async ({ cwd, env }) => {
       const result = await runCli(['wat'], { cwd, env });
 
       expect(result.exitCode).toBe(1);
-      expect(result.stderr).toBe('');
-      expect(result.stdout).toContain('Usage:');
-      expect(result.stdout).toContain('ai-work init');
+      expect(result.stdout).toBe('');
+      expect(result.stderr).toContain('Unknown command: wat');
+      expect(result.stderr).toContain('Usage:');
+      expect(result.stderr).toContain('ai-work init');
     });
   });
 
