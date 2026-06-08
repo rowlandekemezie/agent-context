@@ -24,9 +24,17 @@ const dirs = {
 const currentFocusPath = path.join(projectDir, 'current-focus.md');
 const quirksPath = path.join(projectDir, 'QUIRKS.md');
 const [, , command, subcommand, ...args] = process.argv;
+const packageVersion = '0.1.0';
 
 function usage() {
-  console.log(`Usage:
+  console.log(`ai-work ${packageVersion}
+
+Local-first Markdown memory for AI-assisted software development.
+
+Usage:
+  ai-work <command> [args]
+
+Commands:
   ai-work init
   ai-work info
   ai-work context
@@ -37,7 +45,15 @@ function usage() {
   ai-work handoff list
   ai-work handoff consume
   ai-work doc create <feature|architecture|research> <slug>
-  ai-work doc list <feature|architecture|research> [n]`);
+  ai-work doc list <feature|architecture|research> [n]
+
+Options:
+  -h, --help       Show this help message
+  -v, --version    Show the current version
+
+Environment:
+  AI_WORK_HOME     Base directory for generated work plans
+  AI_WORK_PROJECT  Project name used under AI_WORK_HOME`);
 }
 
 function pad(value) {
@@ -270,6 +286,16 @@ async function context() {
 }
 
 async function main() {
+  if (command === 'help' || command === '--help' || command === '-h') {
+    usage();
+    return;
+  }
+
+  if (command === '--version' || command === '-v') {
+    console.log(packageVersion);
+    return;
+  }
+
   await ensureBaseFiles();
 
   if (command === 'init') {

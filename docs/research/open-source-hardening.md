@@ -86,8 +86,8 @@ Before `0.1.0` public release:
 - [x] Vitest characterization tests exist
 - [x] package dry run exists
 - [ ] CI exists and passes remotely
-- [ ] `--help` behavior exists
-- [ ] `--version` behavior exists
+- [x] `--help` behavior exists
+- [x] `--version` behavior exists
 - [ ] command docs exist
 - [ ] storage format docs exist
 - [ ] GitHub repo URL is added to package metadata

@@ -105,18 +105,18 @@ Test principles:
 
 ## Milestone 3 — OSS UX Hardening
 
-Status: next.
+Status: in progress.
 
 Goal: make the CLI predictable for first-time users.
 
 Tasks:
 
-- Add explicit `--help` and `help` behavior.
-- Add explicit `--version` behavior.
-- Improve usage output formatting.
-- Ensure invalid commands produce actionable messages.
-- Add tests for help/version/usage behavior.
-- Consider making command errors include examples.
+- [x] Add explicit `--help` and `help` behavior.
+- [x] Add explicit `--version` behavior.
+- [x] Improve usage output formatting.
+- [ ] Ensure invalid commands produce actionable messages.
+- [x] Add tests for help/version/usage behavior.
+- [ ] Consider making command errors include examples.
 
 Acceptance criteria:
 

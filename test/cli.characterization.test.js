@@ -216,6 +216,44 @@ describe('ai-work CLI characterization', () => {
     });
   });
 
+
+  it('Given --help, when the CLI runs, then it prints command help without creating storage', async () => {
+    await withTempWorkspace(async ({ cwd, env, projectDir }) => {
+      const result = await runCli(['--help'], { cwd, env });
+
+      expect(result.exitCode).toBe(0);
+      expect(result.stderr).toBe('');
+      expect(result.stdout).toContain('ai-work 0.1.0');
+      expect(result.stdout).toContain('Usage:');
+      expect(result.stdout).toContain('Commands:');
+      expect(result.stdout).toContain('Options:');
+      expect(result.stdout).toContain('AI_WORK_HOME');
+      expect(await exists(projectDir)).toBe(false);
+    });
+  });
+
+  it('Given help, when the CLI runs, then it prints command help successfully', async () => {
+    await withTempWorkspace(async ({ cwd, env }) => {
+      const result = await runCli(['help'], { cwd, env });
+
+      expect(result.exitCode).toBe(0);
+      expect(result.stderr).toBe('');
+      expect(result.stdout).toContain('ai-work <command> [args]');
+      expect(result.stdout).toContain('ai-work progress append [file]');
+    });
+  });
+
+  it('Given --version, when the CLI runs, then it prints the package version without creating storage', async () => {
+    await withTempWorkspace(async ({ cwd, env, projectDir }) => {
+      const result = await runCli(['--version'], { cwd, env });
+
+      expect(result.exitCode).toBe(0);
+      expect(result.stderr).toBe('');
+      expect(result.stdout.trim()).toBe('0.1.0');
+      expect(await exists(projectDir)).toBe(false);
+    });
+  });
+
   it('Given an unknown command, when the CLI runs, then it prints usage and exits with failure', async () => {
     await withTempWorkspace(async ({ cwd, env }) => {
       const result = await runCli(['wat'], { cwd, env });

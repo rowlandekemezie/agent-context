@@ -58,6 +58,8 @@ You can override storage with environment variables:
 
 | Command | Purpose |
 |---|---|
+| `ai-work --help` / `ai-work help` | Show command help |
+| `ai-work --version` | Show the package version |
 | `ai-work init` | Create the project memory layout and print its path |
 | `ai-work info` | Print JSON describing paths and directories |
 | `ai-work context` | Print current focus, quirks, and recent progress |
