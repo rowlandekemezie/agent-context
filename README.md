@@ -10,17 +10,58 @@ No database. No service. No lock-in.
 
 ## Install
 
+`ai-work` is package-ready, but you do not need to wait for a formal npm release to use it.
+
+### Option 1: use from a local checkout
+
 ```sh
-npm install -g ai-work
+git clone <repo-url> ai-work
+cd ai-work
+pnpm install
+pnpm run build
+node dist/cli.js --help
+node dist/cli.js init
 ```
 
-Or run from a local checkout:
+### Option 2: link globally for local dogfooding
+
+From a local checkout:
 
 ```sh
 pnpm install
 pnpm run build
-node dist/cli.js init
+pnpm link --global
+ai-work --help
+ai-work init
 ```
+
+This is the recommended path while the project is pre-release.
+
+### Option 3: install from GitHub
+
+After the repository is pushed to GitHub, install directly from the repo:
+
+```sh
+pnpm add --global github:<owner>/ai-work
+```
+
+or:
+
+```sh
+npm install --global github:<owner>/ai-work
+```
+
+Replace `<owner>` with the GitHub account or organization.
+
+### Option 4: install from npm
+
+Once published to npm:
+
+```sh
+npm install --global ai-work
+```
+
+Until then, prefer local linking or GitHub installation.
 
 ## Quick start
 

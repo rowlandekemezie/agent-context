@@ -27,3 +27,18 @@ The skill instructs agents to:
 ## Requirements
 
 The CLI should be available on `PATH` as `ai-work`, or the agent should know the path to the built CLI.
+
+Recommended pre-release setup:
+
+```sh
+pnpm install
+pnpm run build
+pnpm link --global
+ai-work --help
+```
+
+If you do not link globally, use the built CLI directly:
+
+```sh
+node dist/cli.js --help
+```
