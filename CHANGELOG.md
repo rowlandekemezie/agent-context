@@ -8,5 +8,5 @@ Initial pre-release.
 - Added commands for context, progress logs, handoffs, and planning docs.
 - Added Vitest characterization tests and Oxlint checks.
 - Added GitHub Actions CI.
-- Added Zed agent skill in `skills/agent-context`.
+- Added portable agent instructions.
 - Documented storage format and ownership model.

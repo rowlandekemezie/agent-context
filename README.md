@@ -10,33 +10,21 @@ No database. No service. No lock-in.
 
 ### Local checkout
 
+Until an npm package is published, install from a local checkout:
+
 ```sh
 git clone https://github.com/rowlandekemezie/agent-context.git
 cd agent-context
 pnpm install
 pnpm run build
-node dist/cli.js --help
-```
-
-### Link globally while dogfooding
-
-```sh
-pnpm install
-pnpm run build
-pnpm link --global
+npm install --global .
 agent-context --help
 ```
 
-### Install from GitHub after push
+After npm release, the intended install command is:
 
 ```sh
-pnpm add --global github:rowlandekemezie/agent-context
-```
-
-or:
-
-```sh
-npm install --global github:rowlandekemezie/agent-context
+npm install --global agent-context
 ```
 
 ## Quick start
@@ -106,22 +94,19 @@ See [docs/commands.md](docs/commands.md) for examples.
 
 See [docs/ownership-model.md](docs/ownership-model.md).
 
-## Agent skill
+## Agent instructions
 
-This repo includes a Zed agent skill at `skills/agent-context`.
+`agent-context` is agent-agnostic: the CLI writes plain Markdown files that any human or AI agent can read.
 
-```sh
-mkdir -p ~/.agents/skills
-cp -R skills/agent-context ~/.agents/skills/agent-context
-```
-
-See [docs/skill-installation.md](docs/skill-installation.md).
+To use it with an AI agent, add the portable guidance in [docs/agent-instructions.md](docs/agent-instructions.md) to that agent's instruction mechanism, such as `AGENTS.md`, `CLAUDE.md`, repository rules, memories, or a custom prompt.
 
 ## Development
 
 ```sh
 pnpm install
 pnpm run build
+npm install --global .
+agent-context --help
 pnpm run check
 pnpm test
 pnpm run pack:dry-run
@@ -134,5 +119,6 @@ pnpm run pack:dry-run
 - [Command reference](docs/commands.md)
 - [Storage format](docs/storage-format.md)
 - [Ownership model](docs/ownership-model.md)
+- [Agent instructions](docs/agent-instructions.md)
 - [Contributing](CONTRIBUTING.md)
 - [Roadmap](docs/implementation-plan.md)

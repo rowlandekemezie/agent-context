@@ -5,27 +5,20 @@
 Completed:
 
 - TypeScript CLI in `src/`
-- `dist/` build output
+- generated `dist/` build output
 - pnpm package setup
 - Vitest characterization tests
 - command help/version behavior
 - docs for commands and storage
-- Zed agent skill in `skills/agent-context`
+- portable agent instructions
 - documented ownership model for agent-managed vs human-directed context
 - GitHub Actions CI workflow
+- GitHub repository and package metadata
 
 ## Near-term work
 
 1. Dogfood on real projects.
-2. Push to `github.com/rowlandekemezie/agent-context`.
-3. Confirm GitHub install works:
-
-   ```sh
-   pnpm add --global github:rowlandekemezie/agent-context
-   ```
-
-4. Add repository metadata to `package.json` after the GitHub repo exists.
-5. Decide whether repo-local storage should be supported, for example:
+2. Decide whether repo-local storage should be supported, for example:
 
    ```sh
    agent-context init --local
@@ -37,7 +30,7 @@ Before any npm release:
 
 - [ ] GitHub repo exists
 - [ ] package name availability checked
-- [ ] README install steps verified
+- [ ] npm package install steps defined and verified
 - [ ] CI passes remotely
 - [ ] `pnpm run check` passes
 - [ ] `pnpm test` passes

@@ -12,8 +12,7 @@
     "LICENSE",
     "CHANGELOG.md",
     "CONTRIBUTING.md",
-    "docs",
-    "skills"
+    "docs"
   ],
   "engines": {
     "node": ">=20"
@@ -27,8 +26,7 @@
     "test:watch": "vitest",
     "test:coverage": "pnpm run build && vitest run --coverage",
     "pack:dry-run": "pnpm run build && rm -rf .tmp-pack && pnpm pack --pack-destination .tmp-pack --json && rm -rf .tmp-pack",
-    "lint": "oxlint .",
-    "prepare": "pnpm run build"
+    "lint": "oxlint ."
   },
   "devDependencies": {
     "@types/node": "latest",
